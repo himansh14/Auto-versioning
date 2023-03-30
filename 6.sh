@@ -15,6 +15,7 @@ git config user.email "972214himanshu@gmail.com"
 git config --global user.name "himansh14"
 git config user.name "himansh14"
 git commit
+git push
 
 #checking the current tag of the file
 EXISTING_TAG=$(git describe --tags --abbrev=0) 
