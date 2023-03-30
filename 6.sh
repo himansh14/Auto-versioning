@@ -21,7 +21,6 @@ git push
 EXISTING_TAG=$(git describe --tags --abbrev=0) 
 
 #latest tag on the current branch
-#LATEST_TAG=$(git describe --tags --abbrev=0 | awk -F. '{OFS="."; $NF+=1; print $0}')
 #LATEST_TAG=$(echo git describe --tags --abbrev=0 | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}') 
 
 #different versions for major minor patch
@@ -46,6 +45,5 @@ echo "$NEW_TAG"
 git tag -a "$NEW_TAG" -m "Version $NEW_TAG"
 
 #push changes to the remote
-GIT_REMOTE=$(git push origin "$NEW_TAG")
-
-echo "$GIT_REMOTE" > /opt/all_data_backup/backup/autoversion_script/version/version.txt 
+git push origin "$NEW_TAG"
+echo "$NEW_TAG" > /opt/all_data_backup/backup/autoversion_script/version/version.txt 
