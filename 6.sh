@@ -19,10 +19,8 @@ git push origin "$NEW_TAG"
 git push
 
 #checking the current tag of the file
-EXISTING_TAG=$(git describe --tags --abbrev=0) 
 
-#latest tag on the current branch
-#LATEST_TAG=$(echo git describe --tags --abbrev=0 | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}') 
+EXISTING_TAG=$(echo git tags v1.0.1 | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}') 
 
 #different versions for major minor patch
 MAJOR=$(echo "$EXISTING_TAG" | awk -F. '{print $1}')

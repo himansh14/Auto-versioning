@@ -14,7 +14,7 @@ increment_version ()
   echo -e "${new// /.}"
 }
 
-AUTO_VERSIONING=$(echo git tag | awk -F. -v OFS=. '{$NF += 1 ; print}')
+version='1.0.2'
 
-increment_version $AUTO_VERSIONING
+increment_version $version
 
