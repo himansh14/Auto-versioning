@@ -15,6 +15,7 @@ git config user.email "972214himanshu@gmail.com"
 git config --global user.name "himansh14"
 git config user.name "himansh14"
 git commit
+git push origin "$NEW_TAG"
 git push
 
 #checking the current tag of the file
@@ -45,5 +46,4 @@ echo "$NEW_TAG"
 git tag -a "$NEW_TAG" -m "Version $NEW_TAG"
 
 #push changes to the remote
-git push origin "$NEW_TAG"
 echo "$NEW_TAG" > /opt/all_data_backup/backup/autoversion_script/version/version.txt 
