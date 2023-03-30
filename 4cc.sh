@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #add a change in the working directory to the staging area
-git add "."
+git add .
 
 #commit the files and give message
 git commit -m "latest commit to the file"
@@ -12,7 +12,12 @@ git branch -M main
 #configuration file settings
 #git commit config --global user.name "himansh14"
 #git commit config --global user.email "972214himanshu@gmail.com"
-git commit --amend --author="himansh14 972214himanshu@gmail.com" --no-edit
+git config --global user.email "972214himanshu@gmail.com"
+git config user.email "972214himanshu@gmail.com"
+git config --global user.name "himansh14"
+git config user.name "himansh14"
+git commit
+#git commit --author="himansh14 972214himanshu@gmail.com" --no-edit
 
 #checking the current tag of the file
 NEW_TAG=$(git describe --tags --abbrev=0) 
@@ -47,4 +52,5 @@ git tag -a "$NEWEST_TAG" -m "Version $NEWEST_TAG"
 #push changes to the remote
 git push origin "$NEWEST_TAG"
 
+git push
 #echo "$GIT_PUSH" > /opt/all_data_backup/backup/autoversion_script/version/version.txt 
