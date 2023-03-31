@@ -38,7 +38,7 @@ esac
 
 #creating the new tag for versioning
 NEW_TAG="$MAJOR.$MINOR.$PATCH"
-echo "$NEW_TAG"
+#echo "$NEW_TAG"
 
 #specifying new tags to the existing tags
 git tag -a "$NEW_TAG" -m "Version $NEW_TAG"
