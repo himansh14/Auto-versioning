@@ -15,12 +15,12 @@ git config user.email "972214himanshu@gmail.com"
 git config --global user.name "himansh14"
 git config user.name "himansh14"
 git commit
-git push origin "$NEW_TAG"
+git push origin "$EXISTING_TAG"
 git push
 
 #checking the current tag of the file
-
-EXISTING_TAG=$(echo git tags v1.0.1 | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}') 
+EXISTING_TAG=`git describe --tags --abbrev=0 | awk -F. '{OFS="."; $NF+=1; print $0}'`
+#EXISTING_TAG=$(echo git tags v1.0.1 | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}') 
 
 #different versions for major minor patch
 MAJOR=$(echo "$EXISTING_TAG" | awk -F. '{print $1}')
@@ -41,7 +41,7 @@ NEW_TAG="$MAJOR.$MINOR.$PATCH"
 #echo "$NEW_TAG"
 
 #specifying new tags to the existing tags
-git tag -a "$NEW_TAG" -m "Version $NEW_TAG"
-
+#git tag -a "$NEW_TAG" -m "Version $NEW_TAG"
+git tag -a "EXISTING_TAG" -m "new release"
 #push changes to the remote
-echo "$NEW_TAG" > /opt/all_data_backup/backup/autoversion_script/version/version.txt 
+echo "$EXISTING_TAG" > /opt/all_data_backup/backup/autoversion_script/version/version.txt 
