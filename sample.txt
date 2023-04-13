@@ -5,4 +5,4 @@ XYZ
 456
 789
 101112
-Few lines have been deleted
+Few lines have been deleted completely.
